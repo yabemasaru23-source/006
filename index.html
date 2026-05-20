@@ -237,6 +237,9 @@
         .flow-item p { margin: 0; color: var(--color-text-light); line-height: 1.8; font-size: 0.95em; }
 
         /* ===== Staff ===== */
+        .staff-hero { max-width: 920px; margin: 0 auto 48px; padding: 0; text-align: center; }
+        .staff-hero img { width: 100%; height: auto; border-radius: var(--radius); box-shadow: var(--shadow); display: block; }
+        .staff-hero figcaption { margin-top: 16px; font-size: 0.9em; color: var(--color-text-light); font-family: var(--font-heading); letter-spacing: 0.05em; }
         .staff-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; max-width: 880px; margin: 0 auto; }
         .staff-card { background: var(--color-card); border-radius: var(--radius); padding: 32px 28px; box-shadow: var(--shadow); text-align: center; }
         .staff-card .avatar { width: 100px; height: 100px; border-radius: 50%; background: linear-gradient(135deg, #d5c587 0%, var(--color-accent) 100%); margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; color: var(--color-white); font-family: var(--font-heading); font-size: 2em; font-weight: 700; }
@@ -535,11 +538,7 @@
                     <div class="lineup-label">ローファー</div>
                 </div>
                 <div class="lineup-item">
-                    <img src="images/products/prod-sneaker.jpg" alt="スニーカー（スエード）">
-                    <div class="lineup-label">スニーカー</div>
-                </div>
-                <div class="lineup-item">
-                    <img src="images/products/prod-sneaker2.jpg" alt="スニーカー（レザー）">
+                    <img src="images/products/prod-sneaker.jpg" alt="スニーカー">
                     <div class="lineup-label">スニーカー</div>
                 </div>
             </div>
@@ -750,10 +749,14 @@
             <p class="section-subtitle">
                 靴と足のプロフェッショナルが、お一人おひとりに向き合います。
             </p>
+            <figure class="staff-hero">
+                <img src="images/products/staff-team.jpg" alt="LADIES'KID スタッフ集合写真">
+                <figcaption>店長・小堤啓史 と LADIES'KID チーム</figcaption>
+            </figure>
             <div class="staff-grid">
                 <div class="staff-card">
                     <div class="avatar">監</div>
-                    <h4>小堤 直行</h4>
+                    <h4>小堤 啓史</h4>
                     <div class="role">SUPERVISOR / 監修</div>
                     <p>
                         靴フィッティング業界で <strong>長年講師</strong>として研修を担当。バイオメカニクス理論を取り入れた
