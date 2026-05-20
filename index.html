@@ -102,7 +102,12 @@
 
         /* ===== Hero ===== */
         .hero {
-            background: linear-gradient(135deg, var(--color-primary) 0%, #243559 60%, #2d4a8a 100%);
+            background:
+                linear-gradient(135deg, rgba(26,39,68,0.90) 0%, rgba(36,53,89,0.85) 55%, rgba(45,74,138,0.75) 100%),
+                url('images/products/hero-pumps.jpg');
+            background-size: cover;
+            background-position: center 30%;
+            background-repeat: no-repeat;
             color: var(--color-white);
             padding: 96px 20px 88px;
             text-align: center;
@@ -159,11 +164,20 @@
         .worry-item p { margin: 0; line-height: 1.8; }
 
         /* ===== Strengths (強み) ===== */
-        .strength-card { background: var(--color-card); border-radius: var(--radius); padding: 36px; margin-bottom: 24px; box-shadow: var(--shadow); border-left: 4px solid var(--color-accent); transition: box-shadow 0.2s; }
+        .strength-card { background: var(--color-card); border-radius: var(--radius); padding: 32px; margin-bottom: 24px; box-shadow: var(--shadow); border-left: 4px solid var(--color-accent); transition: box-shadow 0.2s; display: flex; gap: 28px; align-items: stretch; }
         .strength-card:hover { box-shadow: var(--shadow-hover); }
+        .strength-card .strength-img { width: 240px; min-height: 200px; object-fit: cover; border-radius: var(--radius); flex-shrink: 0; }
+        .strength-card .strength-content { flex: 1; }
         .strength-card h3 { color: var(--color-primary); margin-bottom: 14px; font-size: 1.2em; }
         .strength-card .num { display: inline-block; color: var(--color-accent); font-family: var(--font-heading); font-size: 1.6em; margin-right: 12px; font-weight: 900; vertical-align: middle; }
         .strength-card h3 span { vertical-align: middle; }
+
+        /* ===== Product Lineup ===== */
+        .lineup-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; max-width: 1100px; margin: 0 auto; }
+        .lineup-item { background: var(--color-card); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); transition: transform 0.2s, box-shadow 0.2s; }
+        .lineup-item:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); }
+        .lineup-item img { width: 100%; height: 180px; object-fit: cover; display: block; }
+        .lineup-item .lineup-label { padding: 14px 16px; font-family: var(--font-heading); font-weight: 700; color: var(--color-primary); text-align: center; border-top: 2px solid var(--color-accent); font-size: 0.95em; }
 
         /* ===== Comparison table ===== */
         .comparison-wrap { overflow-x: auto; max-width: 920px; margin: 0 auto; box-shadow: var(--shadow); border-radius: var(--radius); }
@@ -257,7 +271,9 @@
             .section { padding: 60px 16px; }
             .contact-section { padding: 60px 16px; }
             .reality-card { padding: 28px 24px; }
-            .strength-card { padding: 28px 24px; }
+            .strength-card { padding: 24px; flex-direction: column; gap: 20px; }
+            .strength-card .strength-img { width: 100%; height: 200px; min-height: 0; }
+            .lineup-item img { height: 160px; }
             .testimonial { padding: 28px 26px; }
             .price-card { padding: 28px 20px; }
             .staff-card { padding: 28px 24px; }
@@ -362,38 +378,90 @@
             </p>
 
             <div class="strength-card">
-                <h3><span class="num">01</span><span>フォーマルからカジュアルまで、幅広く揃う</span></h3>
-                <p>
-                    パンプス・フォーマルパンプス・フラット・ローファー・ブーツ・ドライビング・サンダル・
-                    スニーカーまで、25cm 以上で「全カテゴリを 1 店舗で見比べられる」のは、
-                    都内でも希少なポジションです。
-                </p>
+                <img src="images/products/strength-lineup.jpg" alt="豊富なラインナップ" class="strength-img">
+                <div class="strength-content">
+                    <h3><span class="num">01</span><span>フォーマルからカジュアルまで、幅広く揃う</span></h3>
+                    <p>
+                        パンプス・フォーマルパンプス・フラット・ローファー・ブーツ・ドライビング・サンダル・
+                        スニーカーまで、25cm 以上で「全カテゴリを 1 店舗で見比べられる」のは、
+                        都内でも希少なポジションです。
+                    </p>
+                </div>
             </div>
 
             <div class="strength-card">
-                <h3><span class="num">02</span><span>試着できる池袋の店舗</span></h3>
-                <p>
-                    ネット販売には決定的に欠けている「実際に履いて、歩いて、確かめる」ができます。
-                    幅・甲・かかとのフィット感は、写真や数字では分かりません。
-                    池袋徒歩圏で、何足でもお試しいただけます。
-                </p>
+                <img src="images/products/store-akihabara.jpg" alt="LADIES'KID 池袋店舗" class="strength-img">
+                <div class="strength-content">
+                    <h3><span class="num">02</span><span>試着できる池袋の店舗</span></h3>
+                    <p>
+                        ネット販売には決定的に欠けている「実際に履いて、歩いて、確かめる」ができます。
+                        幅・甲・かかとのフィット感は、写真や数字では分かりません。
+                        池袋徒歩圏で、何足でもお試しいただけます。
+                    </p>
+                </div>
             </div>
 
             <div class="strength-card">
-                <h3><span class="num">03</span><span>計測 × フィッティングで「あなたの一足」へ</span></h3>
-                <p>
-                    足長・足幅・足囲・アーチ・バランス。サイズが合っていても、形が合わないと靴は痛くなります。
-                    専門スタッフがあなたの足を計測し、最適な一足をご提案します（計測サービスは無料）。
-                </p>
+                <img src="images/products/measurement.jpg" alt="専門スタッフによる足の計測" class="strength-img">
+                <div class="strength-content">
+                    <h3><span class="num">03</span><span>計測 × フィッティングで「あなたの一足」へ</span></h3>
+                    <p>
+                        足長・足幅・足囲・アーチ・バランス。サイズが合っていても、形が合わないと靴は痛くなります。
+                        専門スタッフがあなたの足を計測し、最適な一足をご提案します（計測サービスは無料）。
+                    </p>
+                </div>
             </div>
 
             <div class="strength-card">
-                <h3><span class="num">04</span><span>i/288 パターンオーダーで「既製にないもの」も</span></h3>
-                <p>
-                    25cm 以上 × 幅狭・幅広・甲低・甲高 など、既製靴ではどうしても合わない方には、
-                    経済産業省旗振りで設計された <strong>i/288 パターンオーダー</strong> をご用意。
-                    フルオーダーより気軽な価格で、フィット感は圧倒的です。
-                </p>
+                <img src="images/products/strength-diagnose.jpg" alt="i/288 パターンオーダー対応" class="strength-img">
+                <div class="strength-content">
+                    <h3><span class="num">04</span><span>i/288 パターンオーダーで「既製にないもの」も</span></h3>
+                    <p>
+                        25cm 以上 × 幅狭・幅広・甲低・甲高 など、既製靴ではどうしても合わない方には、
+                        経済産業省旗振りで設計された <strong>i/288 パターンオーダー</strong> をご用意。
+                        フルオーダーより気軽な価格で、フィット感は圧倒的です。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================== Product Lineup ============================== -->
+    <section class="section section-alt">
+        <div class="container">
+            <h2 class="section-title">
+                <span class="section-title-en">LINEUP</span>
+                実際のラインナップ
+            </h2>
+            <p class="section-subtitle">
+                25.0〜27.0cm まで、フォーマルから普段履きまで揃っています。<br>
+                ※ 一部商品の参考画像です。最新の在庫状況は LINE またはお電話でご確認ください。
+            </p>
+            <div class="lineup-grid">
+                <div class="lineup-item">
+                    <img src="images/products/prod-pumps.jpg" alt="パンプス">
+                    <div class="lineup-label">パンプス</div>
+                </div>
+                <div class="lineup-item">
+                    <img src="images/products/prod-formal.jpg" alt="フォーマル">
+                    <div class="lineup-label">フォーマル</div>
+                </div>
+                <div class="lineup-item">
+                    <img src="images/products/prod-flat.jpg" alt="フラット">
+                    <div class="lineup-label">フラット</div>
+                </div>
+                <div class="lineup-item">
+                    <img src="images/products/prod-loafer.jpg" alt="ローファー">
+                    <div class="lineup-label">ローファー</div>
+                </div>
+                <div class="lineup-item">
+                    <img src="images/products/prod-sneaker.jpg" alt="スニーカー（スエード）">
+                    <div class="lineup-label">スニーカー</div>
+                </div>
+                <div class="lineup-item">
+                    <img src="images/products/prod-sneaker2.jpg" alt="スニーカー（レザー）">
+                    <div class="lineup-label">スニーカー</div>
+                </div>
             </div>
         </div>
     </section>
@@ -756,6 +824,7 @@
 
     <!-- ============================== Footer ============================== -->
     <footer>
+        <img src="images/products/logo.png" alt="LADIES'KID" style="height:54px; margin: 0 auto 16px; display:block; filter: brightness(0) invert(1);">
         <div class="brand">LADIES' KID</div>
         <p>足と靴の専門店 / 株式会社キッド</p>
         <p>TEL：03-3981-3456 ｜ 営業時間 11:00 - 20:00</p>
