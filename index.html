@@ -106,21 +106,38 @@
 
         /* ===== Hero ===== */
         .hero {
-            background:
-                linear-gradient(135deg, rgba(139,21,56,0.92) 0%, rgba(107,15,42,0.85) 55%, rgba(165,32,80,0.75) 100%),
-                url('images/products/hero-pumps.jpg');
-            background-size: cover;
-            background-position: center 30%;
-            background-repeat: no-repeat;
-            color: var(--color-white);
-            padding: 96px 20px 88px;
-            text-align: center;
             position: relative;
+            color: var(--color-white);
+            padding: 96px 20px 110px;
+            text-align: center;
             overflow: hidden;
+            isolation: isolate;
         }
         .hero::before {
-            content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
-            width: 80px; height: 4px; background: var(--color-accent);
+            content: '';
+            position: absolute;
+            inset: -6%;
+            background: url('images/products/hero-pumps.jpg') center 30% / cover no-repeat;
+            z-index: -2;
+            animation: heroDrift 28s ease-in-out infinite alternate;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(139,21,56,0.92) 0%, rgba(107,15,42,0.85) 55%, rgba(165,32,80,0.75) 100%);
+            z-index: -1;
+        }
+        @keyframes heroDrift {
+            from { transform: scale(1.04) translate(0, 0); }
+            to   { transform: scale(1.12) translate(-1.5%, -2%); }
+        }
+        .hero-accent-bar {
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--color-accent);
+            margin: 0 auto 26px;
         }
         .hero-eyebrow { display: inline-block; color: var(--color-accent); font-size: 0.85em; letter-spacing: 0.3em; margin-bottom: 28px; font-weight: 500; }
         .hero h1 {
@@ -268,6 +285,63 @@
         footer p { margin: 4px 0; }
         footer .brand { font-family: var(--font-heading); font-size: 1.2em; color: var(--color-white); margin-bottom: 12px; letter-spacing: 0.1em; }
 
+        /* ===== Animations: scroll reveal, image hover, scroll cue ===== */
+        @media (prefers-reduced-motion: no-preference) {
+            .reveal {
+                opacity: 0;
+                transform: translateY(40px);
+                transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+                            transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+                will-change: opacity, transform;
+            }
+            .reveal.revealed { opacity: 1; transform: translateY(0); }
+            .reveal[data-delay="1"] { transition-delay: 0.08s; }
+            .reveal[data-delay="2"] { transition-delay: 0.16s; }
+            .reveal[data-delay="3"] { transition-delay: 0.24s; }
+            .reveal[data-delay="4"] { transition-delay: 0.32s; }
+            .reveal[data-delay="5"] { transition-delay: 0.40s; }
+            .reveal[data-delay="6"] { transition-delay: 0.48s; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .hero::before { animation: none; }
+            .scroll-cue { animation: none; }
+        }
+
+        /* Image hover zoom (carousel-like motion) */
+        .strength-card { overflow: hidden; }
+        .strength-card .strength-img { transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1); }
+        .strength-card:hover .strength-img { transform: scale(1.05); }
+        .lineup-item { overflow: hidden; }
+        .lineup-item img { transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1); }
+        .lineup-item:hover img { transform: scale(1.08); }
+
+        /* Hero scroll cue (bouncing arrow) */
+        .scroll-cue {
+            position: absolute;
+            bottom: 28px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--color-accent);
+            font-size: 0.75em;
+            letter-spacing: 0.3em;
+            text-align: center;
+            opacity: 0.85;
+            animation: scrollBounce 2.4s ease-in-out infinite;
+            z-index: 1;
+        }
+        .scroll-cue::after {
+            content: '';
+            display: block;
+            width: 1px;
+            height: 24px;
+            background: var(--color-accent);
+            margin: 8px auto 0;
+        }
+        @keyframes scrollBounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(8px); }
+        }
+
         /* ===== Mobile ===== */
         @media (max-width: 600px) {
             .hero { padding: 70px 16px 64px; }
@@ -297,6 +371,7 @@
 
     <!-- ============================== Hero ============================== -->
     <section class="hero">
+        <span class="hero-accent-bar"></span>
         <span class="hero-eyebrow">FOR 25.0 — 27.0 cm WOMEN</span>
         <h1>
             「ありません」と言われ続けた、<br>
@@ -315,6 +390,7 @@
             </a>
             <a href="#reserve" class="btn btn-primary">来店予約はこちら</a>
         </div>
+        <div class="scroll-cue">SCROLL</div>
     </section>
 
     <!-- ============================== Market Reality ============================== -->
@@ -841,6 +917,57 @@
     document.querySelectorAll('.faq-item').forEach(item => {
         const q = item.querySelector('.faq-q');
         q.addEventListener('click', () => item.classList.toggle('open'));
+    });
+
+    // Scroll-triggered reveal animations: fade up from below
+    (function() {
+        const targets = document.querySelectorAll(
+            '.section-title, .section-subtitle, .reality-card, .worry-item, ' +
+            '.strength-card, .lineup-item, .card, .testimonial, .plan-card, ' +
+            '.staff-card, .fine-table, .comparison-wrap, .size-grid, ' +
+            '.category-grid, .flow-item, .price-card, .price-note, .faq-item'
+        );
+        targets.forEach(el => el.classList.add('reveal'));
+
+        // Stagger delay within each section
+        const groups = [
+            '.worries-grid', '.lineup-grid', '.plans-grid',
+            '.size-grid', '.category-grid', '.price-grid', '.staff-grid'
+        ];
+        groups.forEach(sel => {
+            document.querySelectorAll(sel + ' > *').forEach((el, i) => {
+                el.setAttribute('data-delay', Math.min(i + 1, 6));
+            });
+        });
+
+        if ('IntersectionObserver' in window) {
+            const io = new IntersectionObserver(entries => {
+                entries.forEach(e => {
+                    if (e.isIntersecting) {
+                        e.target.classList.add('revealed');
+                        io.unobserve(e.target);
+                    }
+                });
+            }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+            targets.forEach(el => io.observe(el));
+        } else {
+            // Fallback: reveal all immediately
+            targets.forEach(el => el.classList.add('revealed'));
+        }
+    })();
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+        a.addEventListener('click', e => {
+            const href = a.getAttribute('href');
+            if (href && href.length > 1) {
+                const t = document.querySelector(href);
+                if (t) {
+                    e.preventDefault();
+                    t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            }
+        });
     });
 
     function handleSubmit(e) {
