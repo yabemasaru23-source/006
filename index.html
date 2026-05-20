@@ -74,20 +74,24 @@
 
     <style>
         :root {
-            --color-primary: #1a2744;
-            --color-accent: #c9a84c;
-            --color-sub: #8b96b3;
-            --color-bg: #faf8f3;
-            --color-card: #ffffff;
-            --color-text: #2c2c2c;
-            --color-text-light: #666;
-            --color-white: #ffffff;
+            --color-primary: #8B1538;       /* Deep Burgundy */
+            --color-primary-dark: #6B0F2A;  /* Burgundy dark */
+            --color-primary-light: #A52050; /* Burgundy light */
+            --color-accent: #D4B96A;        /* Champagne Gold */
+            --color-accent-deep: #B8A055;
+            --color-sub: #C4A4A4;
+            --color-bg: #F8F0E8;            /* Warm Cream */
+            --color-bg-alt: #FFFDF8;        /* Even warmer white */
+            --color-card: #FFFFFF;
+            --color-text: #2C1810;          /* Deep Charcoal Brown */
+            --color-text-light: #6B5C50;
+            --color-white: #FFFFFF;
             --color-line: #06C755;
             --font-heading: 'Noto Serif JP', serif;
             --font-body: 'Noto Sans JP', sans-serif;
             --radius: 4px;
-            --shadow: 0 4px 16px rgba(26,39,68,0.10);
-            --shadow-hover: 0 8px 28px rgba(26,39,68,0.16);
+            --shadow: 0 4px 16px rgba(139,21,56,0.10);
+            --shadow-hover: 0 8px 28px rgba(139,21,56,0.16);
         }
         * { box-sizing: border-box; margin: 0; padding: 0; }
         img { max-width: 100%; height: auto; display: block; }
@@ -103,7 +107,7 @@
         /* ===== Hero ===== */
         .hero {
             background:
-                linear-gradient(135deg, rgba(26,39,68,0.90) 0%, rgba(36,53,89,0.85) 55%, rgba(45,74,138,0.75) 100%),
+                linear-gradient(135deg, rgba(139,21,56,0.92) 0%, rgba(107,15,42,0.85) 55%, rgba(165,32,80,0.75) 100%),
                 url('images/products/hero-pumps.jpg');
             background-size: cover;
             background-position: center 30%;
@@ -135,8 +139,8 @@
         .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 16px 28px; font-size: 1em; font-weight: 700; text-decoration: none; border-radius: 50px; transition: transform 0.2s, box-shadow 0.2s; min-width: 240px; cursor: pointer; border: none; }
         .btn-line { background: var(--color-line); color: var(--color-white); box-shadow: 0 4px 14px rgba(6,199,85,0.35); }
         .btn-line:hover { transform: translateY(-2px); box-shadow: 0 8px 22px rgba(6,199,85,0.45); }
-        .btn-primary { background: var(--color-accent); color: var(--color-primary); box-shadow: 0 4px 14px rgba(201,168,76,0.35); }
-        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 22px rgba(201,168,76,0.45); }
+        .btn-primary { background: var(--color-accent); color: var(--color-primary); box-shadow: 0 4px 14px rgba(212,185,106,0.35); }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 22px rgba(212,185,106,0.45); }
         .btn-outline { background: transparent; color: var(--color-white); border: 1px solid rgba(255,255,255,0.4); }
         .btn-outline:hover { background: rgba(255,255,255,0.08); }
 
@@ -186,7 +190,7 @@
         .comparison th { background: var(--color-primary); color: var(--color-white); font-weight: 700; font-size: 0.9em; letter-spacing: 0.04em; }
         .comparison th.kid { background: var(--color-accent); color: var(--color-primary); }
         .comparison td.label { text-align: left; background: #f8f7f0; font-weight: 700; color: var(--color-primary); }
-        .comparison td.kid { background: rgba(201,168,76,0.08); font-weight: 700; color: var(--color-primary); }
+        .comparison td.kid { background: rgba(212,185,106,0.08); font-weight: 700; color: var(--color-primary); }
         .comparison .mark-o { color: var(--color-accent); font-size: 1.3em; font-weight: 900; }
         .comparison .mark-tri { color: #c2a04a; opacity: 0.6; }
         .comparison .mark-x { color: #b0b0b0; }
@@ -259,7 +263,7 @@
         .divider { border: none; border-top: 1px dashed rgba(255,255,255,0.2); margin: 40px auto; max-width: 600px; }
 
         /* ===== Footer ===== */
-        footer { background: #0e1830; color: rgba(255,255,255,0.6); padding: 48px 20px 32px; text-align: center; font-size: 0.85em; line-height: 1.9; }
+        footer { background: var(--color-primary-dark); color: rgba(255,255,255,0.7); padding: 48px 20px 32px; text-align: center; font-size: 0.85em; line-height: 1.9; }
         footer a { color: var(--color-accent); text-decoration: none; }
         footer p { margin: 4px 0; }
         footer .brand { font-family: var(--font-heading); font-size: 1.2em; color: var(--color-white); margin-bottom: 12px; letter-spacing: 0.1em; }
