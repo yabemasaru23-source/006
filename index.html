@@ -170,10 +170,10 @@
         .strength-card h3 span { vertical-align: middle; }
 
         /* ===== Product Lineup ===== */
-        .lineup-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 1100px; margin: 0 auto; }
+        .lineup-grid-top { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 1100px; margin: 0 auto 20px; }
+        .lineup-grid-bottom { display: flex; justify-content: center; gap: 20px; max-width: 1100px; margin: 0 auto; }
+        .lineup-grid-bottom .lineup-item { width: calc((100% - 60px) / 3); max-width: calc((1100px - 60px) / 3); }
         .lineup-item { background: var(--color-card); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); transition: transform 0.2s, box-shadow 0.2s; }
-        .lineup-item:nth-child(4) { grid-column: 2; }
-        .lineup-item:nth-child(5) { grid-column: 3; }
         .lineup-item:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); }
         .lineup-item img { width: 100%; height: 180px; object-fit: cover; display: block; }
         .lineup-item .lineup-label { padding: 14px 16px; font-family: var(--font-heading); font-weight: 700; color: var(--color-primary); text-align: center; border-top: 2px solid var(--color-accent); font-size: 0.95em; }
@@ -197,7 +197,9 @@
         .category-tag { background: var(--color-card); padding: 18px 16px; text-align: center; border-radius: var(--radius); box-shadow: var(--shadow); font-weight: 500; border-bottom: 2px solid var(--color-accent); }
 
         /* ===== Pricing ===== */
-        .price-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; max-width: 940px; margin: 0 auto; }
+        .price-grid-top { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 940px; margin: 0 auto 20px; }
+        .price-grid-bottom { display: flex; justify-content: center; gap: 20px; max-width: 940px; margin: 0 auto; }
+        .price-grid-bottom .price-card { width: calc((100% - 40px) / 3); max-width: calc((940px - 40px) / 3); }
         .price-card { background: var(--color-card); border-radius: var(--radius); padding: 32px 24px; text-align: center; box-shadow: var(--shadow); transition: transform 0.2s, box-shadow 0.2s; }
         .price-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); }
         .price-card .name { font-family: var(--font-heading); font-size: 1.1em; color: var(--color-primary); margin-bottom: 12px; font-weight: 700; }
@@ -481,7 +483,7 @@
                 25.0〜27.0cm まで、フォーマルから普段履きまで揃っています。<br>
                 ※ 一部商品の参考画像です。最新の在庫状況は LINE またはお電話でご確認ください。
             </p>
-            <div class="lineup-grid">
+            <div class="lineup-grid-top">
                 <div class="lineup-item">
                     <img src="images/products/prod-pumps.jpg" alt="パンプス">
                     <div class="lineup-label">パンプス</div>
@@ -494,6 +496,8 @@
                     <img src="images/products/prod-flat.jpg" alt="フラット">
                     <div class="lineup-label">フラット</div>
                 </div>
+            </div>
+            <div class="lineup-grid-bottom">
                 <div class="lineup-item">
                     <img src="images/products/prod-loafer.jpg" alt="ローファー">
                     <div class="lineup-label">ローファー</div>
@@ -626,7 +630,7 @@
                 来店前に、料金の目安を明示しています。<br>
                 ご相談・計測・フィッティングは無料です。
             </p>
-            <div class="price-grid">
+            <div class="price-grid-top">
                 <div class="price-card">
                     <div class="name">既製シューズ</div>
                     <div class="price">¥12,000〜<small>（税別 / 多くは ¥15,000〜¥25,000 帯）</small></div>
@@ -642,6 +646,8 @@
                     <div class="price">¥38,500〜<small>（税別 / 納期 約 2 ヶ月）</small></div>
                     <div class="desc">既製では合わない方の<br>「オーダーメイド」の選択肢</div>
                 </div>
+            </div>
+            <div class="price-grid-bottom">
                 <div class="price-card">
                     <div class="name">計測 / フィッティング</div>
                     <div class="price">無料<small>（ご来店時）</small></div>
