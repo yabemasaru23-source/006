@@ -339,11 +339,17 @@
             .flow-item { gap: 16px; padding: 22px 0; }
             .flow-item::before { font-size: 1.6em; min-width: 42px; }
 
-            /* ラインナップ：スマホは2列 */
-            .lineup-grid-top { grid-template-columns: repeat(2, 1fr); }
+            /* ラインナップ：スマホは常に2列 */
+            .lineup-grid-top { grid-template-columns: repeat(2, 1fr); gap: 12px; }
             .lineup-grid-bottom { gap: 12px; }
             .lineup-grid-bottom .lineup-item { width: calc(50% - 6px); max-width: none; }
-            .lineup-item img { height: 130px; }
+            .lineup-item img { height: 120px; }
+            /* フラット（3番目）が単独→中央に */
+            .lineup-grid-top .lineup-item:nth-child(3):nth-last-child(1) {
+                grid-column: 1 / 3;
+                max-width: 50%;
+                margin: 0 auto;
+            }
 
             /* 料金：スマホは1列 */
             .price-grid-top { grid-template-columns: 1fr; }
