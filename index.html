@@ -107,50 +107,28 @@
         /* ===== Hero ===== */
         .hero {
             position: relative;
-            color: var(--color-white);
-            padding: 96px 20px 110px;
-            text-align: center;
             overflow: hidden;
-            isolation: isolate;
         }
-        .hero::before {
-            content: '';
-            position: absolute;
-            inset: -6%;
-            background: url('images/products/hero-pumps.jpg') center 30% / cover no-repeat;
-            z-index: -2;
-            animation: heroDrift 28s ease-in-out infinite alternate;
+        .hero-img-wrap {
+            width: 100%;
+            line-height: 0;
         }
-        .hero::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, rgba(139,21,56,0.92) 0%, rgba(107,15,42,0.85) 55%, rgba(165,32,80,0.75) 100%);
-            z-index: -1;
-        }
-        @keyframes heroDrift {
-            from { transform: scale(1.04) translate(0, 0); }
-            to   { transform: scale(1.12) translate(-1.5%, -2%); }
-        }
-        .hero-accent-bar {
+        .hero-img-wrap img {
+            width: 100%;
+            height: auto;
             display: block;
-            width: 80px;
-            height: 4px;
-            background: var(--color-accent);
-            margin: 0 auto 26px;
+            max-height: 720px;
+            object-fit: cover;
+            object-position: center top;
         }
-        .hero-eyebrow { display: inline-block; color: var(--color-accent); font-size: 0.85em; letter-spacing: 0.3em; margin-bottom: 28px; font-weight: 500; }
-        .hero h1 {
-            font-size: clamp(1.7em, 4.5vw, 2.6em);
-            line-height: 1.5; margin-bottom: 28px; font-weight: 700; letter-spacing: 0.02em;
+        .hero-cta-bar {
+            background: var(--color-primary);
+            padding: 28px 20px;
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
         }
-        .hero h1 .accent { color: var(--color-accent); }
-        .hero h1 small { display: block; font-size: 0.55em; font-weight: 400; opacity: 0.85; margin-top: 16px; letter-spacing: 0.08em; font-family: var(--font-body); }
-        .hero p.sub {
-            font-size: clamp(0.95em, 2vw, 1.1em);
-            opacity: 0.92; max-width: 700px; margin: 0 auto 40px; line-height: 1.9;
-        }
-        .hero-cta { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-top: 36px; }
 
         /* ===== Buttons ===== */
         .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 16px 28px; font-size: 1em; font-weight: 700; text-decoration: none; border-radius: 50px; transition: transform 0.2s, box-shadow 0.2s; min-width: 240px; cursor: pointer; border: none; }
@@ -359,7 +337,7 @@
             .price-card { padding: 28px 20px; }
             .staff-card { padding: 28px 24px; }
             .btn { width: 100%; min-width: 0; }
-            .hero-cta { flex-direction: column; gap: 12px; }
+            .hero-cta-bar { flex-direction: column; gap: 12px; padding: 20px 16px; }
             .flow-item { gap: 16px; padding: 22px 0; }
             .flow-item::before { font-size: 1.6em; min-width: 42px; }
         }
@@ -369,31 +347,24 @@
 
     <!-- ============================== Top Notice ============================== -->
     <div class="topbar">
-        池袋徒歩圏・<strong>25.0〜27.0cm</strong>を常時お取扱い・試着OK・<strong>計測無料</strong>
+        池袋徒歩圏・<strong>25.0〜27.0cm</strong>を常時お取扱い・試着OK・<strong>突然のご来店も歓迎</strong>
     </div>
 
     <!-- ============================== Hero ============================== -->
     <section class="hero">
-        <span class="hero-accent-bar"></span>
-        <span class="hero-eyebrow">FOR 25.0 — 27.0 cm WOMEN</span>
-        <h1>
-            「ありません」と言われ続けた、<br>
-            <span class="accent">25cm 以上</span>の足に。
-            <small>大きいサイズって、おしゃれをあきらめることじゃない。</small>
-        </h1>
-        <p class="sub">
-            この数年、大きいサイズを扱う有名店が、次々と閉店していきました。<br>
-            ネット販売・スポーツ系スニーカーが受け皿になる中、<br>
-            「パンプスが履きたい」「フォーマルが必要」「スニーカー以外も似合いたい」<br>
-            その選択肢は、確実に減っています。
-        </p>
-        <div class="hero-cta">
-            <a href="https://lin.ee/XXXXXXX" class="btn btn-line" target="_blank" rel="noopener noreferrer">
-                <span>🟢</span> LINE で在庫を相談する
-            </a>
-            <a href="#reserve" class="btn btn-primary">来店予約はこちら</a>
+        <div class="hero-img-wrap">
+            <img src="images/products/hero-main.jpg"
+                 alt="「ありません」と言われ続けた、25cm以上の足に。ぴったりが見つかる、私らしい一足。LADIES'KID"
+                 width="1200" height="630" loading="eager">
         </div>
-        <div class="scroll-cue">SCROLL</div>
+        <div class="hero-cta-bar">
+            <a href="https://ladieskid.jp/" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+                🛍️ ECサイトで商品を見る
+            </a>
+            <a href="#reserve" class="btn btn-outline" style="border-color:var(--color-accent); color:var(--color-accent);">
+                📅 来店予約はこちら
+            </a>
+        </div>
     </section>
 
     <!-- ============================== Market Reality ============================== -->
@@ -406,24 +377,13 @@
             <p class="section-subtitle">
                 市場の現状を、まず正直にお伝えします。
             </p>
-            <div class="reality-card">
-                <p>
-                    25cm 以上の女性靴を専門に扱っていた都内の有名店が、ここ <strong>2 年</strong> ほどで
-                    相次いで閉店しています。
-                </p>
-                <p>
-                    代わりに <strong>ネット販売・アパレル・スポーツ系スニーカー</strong> が市場を分け合うように
-                    なりましたが、これらは「試着できない」「パンプスやフォーマルが少ない」「ファッションの幅が限られる」
-                    という共通の弱点があります。
-                </p>
-                <p>
-                    一方で、結婚式・就活・通勤・冠婚葬祭——<strong>パンプスやフォーマルを履かなければならない場面</strong>
-                    は今もたくさんあります。「お気に入りの一足」と出会いたい想いも、変わっていません。
-                </p>
-                <p>
-                    <strong>LADIES'KID は、その「行き場をなくした選択肢」を池袋で守り続けている専門店です。</strong>
-                </p>
-            </div>
+
+            <!-- 前半：簡潔な訴求 -->
+            <p style="text-align:center; font-size:1.05em; color:var(--color-primary); font-weight:600; line-height:2; margin-bottom:16px;">
+                大きいサイズを扱う有名店が、次々と閉店しています。<br>
+                「パンプスが履きたい」「フォーマルが必要」「スニーカー以外も選びたい」——<br>
+                LADIES'KID は、その選択肢を池袋で守り続けている専門店です。
+            </p>
         </div>
     </section>
 
@@ -496,7 +456,7 @@
             </div>
 
             <div class="strength-card">
-                <img src="images/products/strength-diagnose.jpg" alt="i/288 パターンオーダー対応" class="strength-img">
+                <img src="images/products/myth-reality.jpg" alt="靴の誤解と専門家の真実" class="strength-img">
                 <div class="strength-content">
                     <h3><span class="num">04</span><span>i/288 パターンオーダーで「既製にないもの」も</span></h3>
                     <p>
@@ -576,24 +536,24 @@
                         </tr>
                         <tr>
                             <td class="label">パンプス・ヒール</td>
-                            <td><span class="mark-x">✕</span></td>
+                            <td><span class="mark-tri">△</span></td>
                             <td><span class="mark-tri">△</span></td>
                             <td><span class="mark-x">✕</span></td>
                             <td class="kid"><span class="mark-o">◎</span></td>
                         </tr>
                         <tr>
                             <td class="label">フォーマル対応</td>
-                            <td><span class="mark-x">✕</span></td>
+                            <td><span class="mark-tri">△</span></td>
                             <td><span class="mark-tri">△</span></td>
                             <td><span class="mark-x">✕</span></td>
                             <td class="kid"><span class="mark-o">◎</span></td>
                         </tr>
                         <tr>
-                            <td class="label">試着できる</td>
+                            <td class="label">試着・フィッティング</td>
                             <td><span class="mark-tri">△</span></td>
                             <td><span class="mark-x">✕</span></td>
-                            <td><span class="mark-o">○</span></td>
-                            <td class="kid"><span class="mark-o">◎</span></td>
+                            <td><span class="mark-o">○</span> 試着のみ</td>
+                            <td class="kid"><span class="mark-o">◎</span> 試着＋専門フィッティング</td>
                         </tr>
                         <tr>
                             <td class="label">専門計測</td>
@@ -707,8 +667,8 @@
             <div class="flow-list">
                 <div class="flow-item">
                     <div>
-                        <h4>ご予約（LINE・電話・フォーム）</h4>
-                        <p>ご希望のサイズ・カテゴリをお知らせください。在庫状況を事前にお調べしてご来店をお迎えします。</p>
+                        <h4>ご予約（LINE・電話）※ 突然のご来店も歓迎</h4>
+                        <p>事前にご予約いただくと、2F 大きいサイズ担当スタッフを確保してスムーズにご案内できます。もちろん飛び込みでもお気軽にどうぞ。</p>
                     </div>
                 </div>
                 <div class="flow-item">
@@ -719,14 +679,14 @@
                 </div>
                 <div class="flow-item">
                     <div>
-                        <h4>計測（無料）</h4>
-                        <p>足長・足幅・足囲・甲の高さ・アーチ・バランスを専門スタッフが計測。サイズだけでは見えない「形」を把握します。</p>
+                        <h4>計測（ご要望に応じて・無料）</h4>
+                        <p>足長・足幅・足囲・甲の高さ・アーチ・バランスを専門スタッフが計測します。「サイズは分かっているからすぐ試したい」という方は、試着から始めることもできます。</p>
                     </div>
                 </div>
                 <div class="flow-item">
                     <div>
                         <h4>試着・フィッティング</h4>
-                        <p>ご提案した複数の靴を、実際に履いて歩いてください。必要に応じてインソール調整も対応します。</p>
+                        <p>ご提案した複数の靴を、実際に履いて歩いてください。スキルのあるスタッフがフィッティングをしっかり確認します。必要に応じてインソール調整も対応。</p>
                     </div>
                 </div>
                 <div class="flow-item">
@@ -765,20 +725,20 @@
                 </div>
                 <div class="staff-card">
                     <div class="avatar">L</div>
-                    <h4>主任 シューカウンセラー</h4>
-                    <div class="role">CHIEF COUNSELOR</div>
+                    <h4>シューカウンセラー</h4>
+                    <div class="role">SHOE COUNSELOR</div>
                     <p>
-                        社内の<strong>厳しい研修・資格</strong>を経たスタッフが、足長・足幅・甲・アーチ・歩行パターンまで
-                        確認したうえでご提案します。「サイズ通りなのに痛い」を構造から解決します。
+                        足長・足幅・甲・アーチ・歩行パターンまで確認したうえでご提案する、
+                        専門研修を積んだスタッフが対応します。「サイズ通りなのに痛い」を構造から解決します。
                     </p>
                 </div>
                 <div class="staff-card">
                     <div class="avatar">K</div>
-                    <h4>大きいサイズ担当</h4>
-                    <div class="role">LARGE SIZE EXPERT</div>
+                    <h4>あなたの気持ち、分かります</h4>
+                    <div class="role">LARGE SIZE STAFF</div>
                     <p>
-                        25cm 以上の女性靴の <strong>在庫管理・選定</strong>を専門に担当。フォーマルから普段履きまで、
-                        季節ごとの入荷情報も LINE でお知らせします。
+                        スタッフの中には、<strong>自身も同じ悩みを持つ</strong>大きいサイズの女性が在籍しています。
+                        「ずっと諦めてきた」その気持ちを、同じ立場で理解するスタッフがお迎えします。
                     </p>
                 </div>
             </div>
@@ -829,6 +789,48 @@
         </div>
     </section>
 
+    <!-- ============================== Reality（後半・再掲） ============================== -->
+    <section class="section section-alt">
+        <div class="container">
+
+            <!-- 熱いメッセージ -->
+            <div style="text-align:center; margin-bottom:48px;">
+                <p style="font-size:clamp(1.3em,3.5vw,1.9em); font-family:var(--font-heading); font-weight:900; color:var(--color-primary); line-height:1.6; margin-bottom:20px;">
+                    ぜひ、キッドへお越しください。<br>
+                    <span style="color:var(--color-accent);">後悔は、させません。</span>
+                </p>
+                <p style="font-size:1.05em; color:var(--color-text-light); line-height:2; max-width:640px; margin:0 auto 24px;">
+                    「どうせ私のサイズはない」と思って、諦めながらここまで読んでくれたあなたへ。<br>
+                    キッドには、<strong style="color:var(--color-primary);">あなたの一足が、あります。</strong>
+                </p>
+                <p style="font-size:0.97em; color:var(--color-text-light); line-height:2; max-width:600px; margin:0 auto;">
+                    足のこと、靴のこと、諦めてきたこと——全部、話しかけてください。<br>
+                    スタッフ一同、池袋でお待ちしています。
+                </p>
+            </div>
+
+            <div class="reality-card">
+                <p>
+                    25cm 以上の女性靴を専門に扱っていた都内の有名店が、ここ <strong>2 年</strong> ほどで
+                    相次いで閉店しています。
+                </p>
+                <p>
+                    代わりに <strong>ネット販売・アパレル・スポーツ系スニーカー</strong> が市場を分け合うように
+                    なりましたが、これらは「試着できない」「パンプスやフォーマルが少ない」「ファッションの幅が限られる」
+                    という共通の弱点があります。
+                </p>
+                <p>
+                    一方で、結婚式・就活・通勤・冠婚葬祭——<strong>パンプスやフォーマルを履かなければならない場面</strong>
+                    は今もたくさんあります。「お気に入りの一足」と出会いたい想いも、変わっていません。
+                </p>
+                <p>
+                    <strong>大きいサイズって、おしゃれをあきらめることじゃない。<br>
+                    LADIES'KID は、その「行き場をなくした選択肢」を池袋で守り続けている専門店です。</strong>
+                </p>
+            </div>
+        </div>
+    </section>
+
     <!-- ============================== FAQ ============================== -->
     <section class="section section-alt">
         <div class="container">
@@ -854,8 +856,8 @@
                     <div class="faq-a">予約をおすすめしますが、ふらっとご来店も歓迎です。ただし、サイズ豊富な在庫を確認したい・じっくりカウンセリングを受けたい場合は予約のうえご来店ください。</div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-q">遠方なのですが、購入後の返品は可能ですか？</div>
-                    <div class="faq-a">未使用・タグ付き・期間内であれば返品・交換に対応しています。詳細条件は購入時にご案内します。お電話・LINE での在庫確認＋全国配送も可能です。</div>
+                    <div class="faq-q">遠方なのですが、購入・返品はどうすればよいですか？</div>
+                    <div class="faq-a">ECサイトにて商品をご確認のうえ、ご購入いただけます。返品・交換については ECサイトの各商品ページをご参照ください。</div>
                 </div>
             </div>
         </div>
@@ -866,42 +868,20 @@
         <div class="container">
             <h2 class="section-title">
                 <span class="section-title-en">RESERVATION</span>
-                ご予約・お問い合わせ
+                ご来店予約・商品を見る
             </h2>
             <p class="section-subtitle">
-                LINE が一番スムーズです。<br>
-                電話・フォームでも承ります。
+                事前にご予約いただくと、2F 大きいサイズ担当スタッフを確保してスムーズにご案内できます。<br>
+                ふらっとご来店も、もちろん大歓迎です。
             </p>
-            <a href="https://lin.ee/XXXXXXX" class="btn btn-line" target="_blank" rel="noopener noreferrer" style="display:flex; max-width:440px; margin: 0 auto 24px;">
-                <span>🟢</span> LINE で予約・在庫相談
-            </a>
-            <p style="text-align:center; opacity:0.85;">
-                お電話：<a href="tel:0339813456" style="color:var(--color-accent); text-decoration:none; font-weight:700;">03-3981-3456</a>（11:00〜20:00）
-            </p>
-
-            <hr class="divider">
-
-            <p style="text-align: center; margin-bottom: 28px; opacity: 0.9;">フォームからのお問い合わせはこちら</p>
-            <form class="contact-form" onsubmit="handleSubmit(event)">
-                <div class="form-group">
-                    <label for="name">お名前 <span class="required">※必須</span></label>
-                    <input type="text" id="name" name="name" required placeholder="例：山田 花子">
-                </div>
-                <div class="form-group">
-                    <label for="tel">ご連絡先（電話番号）</label>
-                    <input type="tel" id="tel" name="tel" placeholder="例：090-1234-5678">
-                </div>
-                <div class="form-group">
-                    <label for="email">メールアドレス <span class="required">※必須</span></label>
-                    <input type="email" id="email" name="email" required placeholder="例：info@example.com">
-                </div>
-                <div class="form-group">
-                    <label for="message">お問い合わせ内容 <span class="required">※必須</span></label>
-                    <textarea id="message" name="message" rows="5" required placeholder="ご希望のサイズ・カテゴリ・ご来店希望日などをお知らせください。"></textarea>
-                </div>
-                <button type="submit" class="submit-btn">送 信 す る</button>
-                <p class="form-note">※ 送信後、担当者より 2 営業日以内にご連絡いたします。</p>
-            </form>
+            <div style="display:flex; flex-direction:column; align-items:center; gap:20px; max-width:480px; margin:0 auto 32px;">
+                <a href="https://ladieskid.jp/" class="btn btn-primary" target="_blank" rel="noopener noreferrer" style="width:100%; background:var(--color-accent); color:var(--color-primary);">
+                    🛍️ ECサイトで商品を見る
+                </a>
+                <a href="tel:0339813456" class="btn" style="width:100%; background:transparent; border:2px solid var(--color-accent); color:var(--color-accent); text-decoration:none;">
+                    📅 来店予約・お電話：03-3981-3456
+                </a>
+            </div>
         </div>
     </section>
 
@@ -916,7 +896,6 @@
     </footer>
 
     <script>
-    // FAQ toggle
     document.querySelectorAll('.faq-item').forEach(item => {
         const q = item.querySelector('.faq-q');
         q.addEventListener('click', () => item.classList.toggle('open'));
@@ -973,12 +952,6 @@
         });
     });
 
-    function handleSubmit(e) {
-        e.preventDefault();
-        // TODO: 実運用時は Formspree 等の送信先 URL に変更してください
-        alert('お問い合わせありがとうございます！\n担当者より折り返しご連絡いたします。');
-        e.target.reset();
-    }
     </script>
 </body>
 </html>
